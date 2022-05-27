@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Project</string>
+
+    <string name="string_home">홈</string>
+    <string name="string_write">글쓰기</string>
+    <string name="string_setting">설정</string>
+
+    <string name="string_fragment_write">글쓰기프래그먼트</string>
+    <string name="string_fragment_home">홈프래그먼트</string>
+    <string name="string_fragment_setting">세팅프래그먼트</string>
+
+<!--    fragment_search-->
+    <string name="title">작품검색</string>
+    <string name="frozen">     겨울왕국</string>
+
+</resources>
