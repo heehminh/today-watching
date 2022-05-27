@@ -11,6 +11,15 @@
 
 <!--    fragment_search-->
     <string name="title">작품검색</string>
-    <string name="frozen">     겨울왕국</string>
+    <string name="frozen">겨울왕국</string>
+    
+<!--    fragment_setting-->
+    <string name="review">내가 남긴 후기</string>
+    <string name="wish">내가 찜한 작품</string>
+    <string name="clause">약관</string>
+    <string name="notify">공지사항</string>
+
+<!--    fragment_home-->
+    <string name="text">이런 작품 어때요?</string>
 
 </resources>

@@ -2,10 +2,12 @@ package org.app.project
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.RequiresPermission
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.app.project.databinding.ActivityMainBinding
+import org.app.project.search.WrtieFragment
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -19,26 +21,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initNavigation() {
-        supportFragmentManager.beginTransaction().replace(R.id.main_bnv, HomeFragment())
+        supportFragmentManager.beginTransaction().replace(R.id.main_frm, HomeFragment())
             .commitAllowingStateLoss()
 
         binding.mainBnv.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.icon_writing -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_bnv, SearchFragment())
+                        .replace(R.id.main_frm, WrtieFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
                 R.id.icon_home -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_bnv, HomeFragment())
+                        .replace(R.id.main_frm, HomeFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
                 R.id.icon_setting -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_bnv, SettingFragment())
+                        .replace(R.id.main_frm, SettingFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }

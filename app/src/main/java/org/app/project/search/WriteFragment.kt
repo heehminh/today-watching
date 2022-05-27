@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.databinding.DataBindingUtil
+import org.app.project.R
 import org.app.project.databinding.FragmentSearchBinding
+import org.app.project.databinding.FragmentWriteBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,8 +21,8 @@ private const val ARG_PARAM2 = "param2"
  * Use the [WriteFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class SearchFragment : Fragment() {
-    private lateinit var binding: FragmentSearchBinding
+class WrtieFragment : Fragment() {
+    private lateinit var binding: FragmentWriteBinding
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -38,23 +40,23 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
-        val mActivity = activity as MainActivity
-
-        binding.searchIconIv.setOnClickListener {
-            var searchMovie: String = binding.searchTitleEt.text.toString()
-            mActivity.callFragment(SearchResultFragment(searchMovie))
-        }
-
-        binding.searchTitleEt.setOnEditorActionListener{v, actionId, event ->
-            var handled = false
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                var searchMovie: String = binding.searchTitleEt.text.toString()
-                mActivity.callFragment(SearchResultFragment(searchMovie))
-                handled = true
-            }
-            handled
-        }
+//        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
+//        val mActivity = activity as MainActivity
+//
+//        binding.searchIconIv.setOnClickListener {
+//            var searchMovie: String = binding.searchTitleEt.text.toString()
+//            mActivity.callFragment(SearchResultFragment(searchMovie))
+//        }
+//
+//        binding.searchTitleEt.setOnEditorActionListener{v, actionId, event ->
+//            var handled = false
+//            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+//                var searchMovie: String = binding.searchTitleEt.text.toString()
+//                mActivity.callFragment(SearchResultFragment(searchMovie))
+//                handled = true
+//            }
+//            handled
+//        }
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_write, container, false)
@@ -70,13 +72,15 @@ class SearchFragment : Fragment() {
          * @return A new instance of fragment WriteFragment.
          */
         // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+//        @JvmStatic
+//        fun newInstance(param1: String, param2: String) =
+//            WriteFragment().apply {
+//                arguments = Bundle().apply {
+//                    putString(ARG_PARAM1, param1)
+//                    putString(ARG_PARAM2, param2)
+//                }
+//            }
+
+
     }
 }
