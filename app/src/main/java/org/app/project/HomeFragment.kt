@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 import org.app.project.databinding.FragmentHomeBinding
 import org.app.project.search.Movie
 import org.app.project.search.MovieRVAdapter
@@ -40,11 +41,37 @@ class HomeFragment : Fragment() {
 
         movieRVAdapter.setMyItemClickListener(object: MovieRVAdapter.MyItemClickListener{
             override fun onItemClick(movie: Movie) {
-                // startMoreFragment(movie)
+                changeMoreFragment(movie)
+                // changeWishFragment(movie)
+            }
+
+            private fun changeMoreFragment(movie: Movie) {
                 (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frm, MoreFragment())
+                    .replace(R.id.main_frm, MoreFragment().apply {
+                        arguments = Bundle().apply {
+            //                            putString("title", movie.title)
+            //                            putInt("img", movie.image)
+            //                            putBoolean("like", movie.like)
+                            val gson = Gson()
+                            val movieJson = gson.toJson(movie)
+                            putString("title", movieJson)
+                        }
+                    })
                     .commitAllowingStateLoss()
             }
+
+//            private fun changeWishFragment(movie: Movie) {
+//                (context as MainActivity).supportFragmentManager.beginTransaction()
+//                    .replace(R.id.main_frm, WishFragment().apply {
+//                        arguments = Bundle().apply {
+//                            val gson = Gson()
+//                            val movieJson = gson.toJson(movie)
+//                            putString("movie", movieJson)
+//                        }
+//                    })
+//                    .commitAllowingStateLoss()
+//            }
+
 
             override fun onRemoveAlbum(position: Int) {
                 movieRVAdapter.removeItem(position)
@@ -55,37 +82,7 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    fun startMoreFragment(movie: Movie) {
-        (context as MainActivity).supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frm, MoreFragment().apply {
-                arguments = Bundle().apply {
-                    // val gson = Gson()
-                    putString("movie", movie.title)
-                }
-            })
-            .commitAllowingStateLoss()
-    }
 
-
-//    companion object {
-//        /**
-//         * Use this factory method to create a new instance of
-//         * this fragment using the provided parameters.
-//         *
-//         * @param param1 Parameter 1.
-//         * @param param2 Parameter 2.
-//         * @return A new instance of fragment HomeFragment.
-//         */
-//        // TODO: Rename and change types and number of parameters
-//        @JvmStatic
-//        fun newInstance(param1: String, param2: String) =
-//            HomeFragment().apply {
-//                arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
-//                }
-//            }
-//    }
 }
 
 

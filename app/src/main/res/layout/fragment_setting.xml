@@ -35,7 +35,7 @@
             android:textStyle="bold"
             android:text="@string/wish"
             android:textSize="30sp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="60dp"
             android:layout_marginStart="50dp"/>
 
         <View
@@ -53,7 +53,7 @@
             android:textStyle="bold"
             android:text="@string/clause"
             android:textSize="30sp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="60dp"
             android:layout_marginStart="50dp"/>
 
         <View
@@ -71,7 +71,7 @@
             android:textStyle="bold"
             android:text="@string/notify"
             android:textSize="30sp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="60dp"
             android:layout_marginStart="50dp"/>
 
         <View

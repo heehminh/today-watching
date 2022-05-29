@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
 
     <ImageView
         android:id="@+id/more_back_iv"
@@ -66,15 +72,6 @@
         app:layout_constraintTop_toTopOf="@id/more_movie_title_tv"
         app:layout_constraintBottom_toBottomOf="@id/more_movie_title_tv"/>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/more_movie_text_scroll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/more_movie_title_tv">
-
     <TextView
         android:id="@+id/more_movie_text_tv"
         android:layout_width="match_parent"
@@ -82,8 +79,13 @@
         android:text="@string/more"
         android:textSize="20sp"
         android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/more_movie_title_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="20dp"
         />
 
-    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

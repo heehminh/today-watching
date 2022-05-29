@@ -26,15 +26,15 @@ class MainActivity : AppCompatActivity() {
 
         binding.mainBnv.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.icon_writing -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, WrtieFragment())
-                        .commitAllowingStateLoss()
-                    return@setOnItemSelectedListener true
-                }
                 R.id.icon_home -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.main_frm, HomeFragment())
+                        .commitAllowingStateLoss()
+                    return@setOnItemSelectedListener true
+                }
+                R.id.icon_writing -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_frm, WrtieFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }

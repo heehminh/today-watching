@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/icon_writing"
-        android:icon="@drawable/icon_write"
-        app:showAsAction="ifRoom"
-        android:enabled="true"
-        android:title="@string/string_write"/>
-    <item
         android:id="@+id/icon_home"
         android:icon="@drawable/icon_home"
         app:showAsAction="ifRoom"
         android:enabled="true"
         android:title="@string/string_home"/>
+    <item
+        android:id="@+id/icon_writing"
+        android:icon="@drawable/icon_write"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:title="@string/string_write"/>
     <item
         android:id="@+id/icon_setting"
         android:icon="@drawable/icon_setting"

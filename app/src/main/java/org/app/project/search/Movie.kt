@@ -3,6 +3,7 @@ package org.app.project.search
 data class Movie(
     var title: String,
     var image: Int,
-    var like: Boolean
+    var like: Boolean,
+    var text: String?= null
 )
 
