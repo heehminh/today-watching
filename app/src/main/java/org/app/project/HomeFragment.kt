@@ -5,49 +5,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import org.app.project.databinding.FragmentHomeBinding
+import org.app.project.search.Movie
+import org.app.project.search.MovieRVAdapter
+import retrofit2.converter.gson.GsonConverterFactory
 
-//
-//// TODO: Rename parameter arguments, choose names that match
-//// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//private const val ARG_PARAM1 = "param1"
-//private const val ARG_PARAM2 = "param2"
-//
-///**
-// * A simple [Fragment] subclass.
-// * Use the [HomeFragment.newInstance] factory method to
-// * create an instance of this fragment.
-// */
 class HomeFragment : Fragment() {
-//    // TODO: Rename and change types of parameters
-//    private var param1: String? = null
-//    private var param2: String? = null
+
     lateinit var binding: FragmentHomeBinding
     private var movieDatas = ArrayList<Movie>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-//        arguments?.let {
-//            param1 = it.getString(ARG_PARAM1)
-//            param2 = it.getString(ARG_PARAM2)
-//        }
-        binding = FragmentHomeBinding.inflate(layoutInflater)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        val movie = arrayOf(
-//            Movie("겨울왕국", R.drawable.data_movie_image, false),
-//            Movie("김민희", R.drawable.data_movie_image, false),
-//            Movie("굿플레이스", R.drawable.data_movie_image, false),
-//            Movie("네버해브아이에버", R.drawable.data_movie_image, false),
-//            Movie("엘사", R.drawable.data_movie_image, false),
-//            Movie("올라프", R.drawable.data_movie_image, false),
-//        )
+        binding = FragmentHomeBinding.inflate(layoutInflater)
 
-        // TODO: 2022-05-27 넷플릭스 api 연동해서 수정하기 
+        // TODO: 2022-05-27 넷플릭스 api 연동해서 수정하기
         movieDatas.apply {
             add(Movie("겨울왕국", R.drawable.data_movie_image, false))
             add(Movie("김민희", R.drawable.data_movie_image, false))
@@ -56,12 +32,40 @@ class HomeFragment : Fragment() {
             add(Movie("인터스텔라", R.drawable.data_movie_image, true))
             add(Movie("안나", R.drawable.data_movie_image, false))
         }
-        
-        
+
+        // 더미데이터와 Adapter 연결
+        val movieRVAdapter = MovieRVAdapter(movieDatas)
+        binding.homeRecyclerview.adapter = movieRVAdapter
+        binding.homeRecyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        movieRVAdapter.setMyItemClickListener(object: MovieRVAdapter.MyItemClickListener{
+            override fun onItemClick(movie: Movie) {
+                // startMoreFragment(movie)
+                (context as MainActivity).supportFragmentManager.beginTransaction()
+                    .replace(R.id.main_frm, MoreFragment())
+                    .commitAllowingStateLoss()
+            }
+
+            override fun onRemoveAlbum(position: Int) {
+                movieRVAdapter.removeItem(position)
+            }
+        })
 
 
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return binding.root
     }
+
+    fun startMoreFragment(movie: Movie) {
+        (context as MainActivity).supportFragmentManager.beginTransaction()
+            .replace(R.id.main_frm, MoreFragment().apply {
+                arguments = Bundle().apply {
+                    // val gson = Gson()
+                    putString("movie", movie.title)
+                }
+            })
+            .commitAllowingStateLoss()
+    }
+
 
 //    companion object {
 //        /**
@@ -83,3 +87,6 @@ class HomeFragment : Fragment() {
 //            }
 //    }
 }
+
+
+
