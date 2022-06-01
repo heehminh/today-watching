@@ -4,7 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".WishFragment">
+    tools:context=".setting.WishFragment">
+
+    <ImageView
+        android:id="@+id/wish_back_iv"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:src="@drawable/icon_back"
+        android:layout_margin="30dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
         android:id="@+id/wish_text_tv"
@@ -14,8 +23,10 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="@color/black"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="@id/wish_back_iv"
+        app:layout_constraintBottom_toBottomOf="@id/wish_back_iv"
+        app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="30dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -25,7 +36,8 @@
         android:layout_marginTop="30dp"
         app:layout_constraintTop_toBottomOf="@id/wish_text_tv"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_movie_more"/>
 
 
 

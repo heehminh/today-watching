@@ -1,4 +1,4 @@
-package org.app.project
+package org.app.project.setting
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,35 +6,36 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
-import org.app.project.databinding.FragmentWriteBinding
-import org.app.project.search.Movie
+import org.app.project.MainActivity
+import org.app.project.R
+import org.app.project.databinding.FragmentWishBinding
+import org.app.project.home.Movie
 
 class WishFragment : Fragment() {
-    lateinit var binding: FragmentWriteBinding
+    lateinit var binding: FragmentWishBinding
     private var gson: Gson = Gson()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentWriteBinding.inflate(inflater, container, false)
+        binding = FragmentWishBinding.inflate(inflater, container, false)
 
         val movieData = arguments?.getString("title")
         val movie = gson.fromJson(movieData, Movie::class.java)
 
         // setInit(movie)
 
-//        binding.moreBackIv.setOnClickListener {
-//            (context as MainActivity).supportFragmentManager.beginTransaction()
-//                .replace(R.id.main_frm, HomeFragment())
-//                .commitAllowingStateLoss()
-//        }
+        binding.wishBackIv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, SettingFragment())
+                .commitAllowingStateLoss()
+        }
 //
         return binding.root
     }
-//
+
 //    private fun setInit(movie: Movie) {
 //        binding.moreMovieImageIv.setImageResource(movie.image)
 //        binding.moreMovieTitleTv.text = movie.title.toString()

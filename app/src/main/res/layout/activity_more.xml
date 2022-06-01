@@ -22,18 +22,17 @@
         android:layout_margin="30dp"
         android:src="@drawable/icon_like"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="visible"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <ImageView
-        android:id="@+id/more_like_off_iv"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="30dp"
-        android:src="@drawable/icon_like"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="invisible"/>
+<!--    <ImageView-->
+<!--        android:id="@+id/more_like_off_iv"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:layout_margin="30dp"-->
+<!--        android:src="@drawable/icon_like"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        android:visibility="invisible"/>-->
 
     <ImageView
         android:id="@+id/more_movie_image_iv"

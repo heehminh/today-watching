@@ -1,4 +1,4 @@
-package org.app.project.search
+package org.app.project.home
 
 import android.view.LayoutInflater
 import android.view.View
@@ -63,13 +63,17 @@ class MovieRVAdapter(private val movieList: ArrayList<Movie>) :
                 binding.moreLikeOn.visibility = View.GONE
                 binding.moreLikeOff.visibility = View.VISIBLE
             }
+
+            binding.moreLikeOn.setOnClickListener {
+                binding.moreLikeOn.visibility = View.INVISIBLE
+                binding.moreLikeOff.visibility = View.VISIBLE
+                movie.like = false
+            }
+            binding.moreLikeOff.setOnClickListener {
+                binding.moreLikeOn.visibility = View.VISIBLE
+                binding.moreLikeOff.visibility = View.INVISIBLE
+                movie.like = true
+            }
         }
     }
-
-
-
-
-
 }
-
-

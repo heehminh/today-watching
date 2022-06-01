@@ -8,9 +8,13 @@
         <entry key="..\:/Users/USER/MobileComputing/Project/app/src/main/res/drawable/main_btm_setting_selector.xml" value="0.19114583333333332" />
         <entry key="..\:/Users/USER/MobileComputing/Project/app/src/main/res/drawable/main_btm_write_selector.xml" value="0.1" />
         <entry key="..\:/Users/USER/MobileComputing/Project/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/USER/MobileComputing/Project/app/src/main/res/layout/activity_more.xml" value="0.175" />
         <entry key="..\:/Users/USER/MobileComputing/Project/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Users/USER/MobileComputing/Project/app/src/main/res/layout/fragment_clause.xml" value="0.175" />
         <entry key="..\:/Users/USER/MobileComputing/Project/app/src/main/res/layout/fragment_home.xml" value="0.12" />
         <entry key="..\:/Users/USER/MobileComputing/Project/app/src/main/res/layout/fragment_more.xml" value="0.175" />
+        <entry key="..\:/Users/USER/MobileComputing/Project/app/src/main/res/layout/fragment_notify.xml" value="0.175" />
+        <entry key="..\:/Users/USER/MobileComputing/Project/app/src/main/res/layout/fragment_review.xml" value="0.175" />
         <entry key="..\:/Users/USER/MobileComputing/Project/app/src/main/res/layout/fragment_search.xml" value="0.23452768729641693" />
         <entry key="..\:/Users/USER/MobileComputing/Project/app/src/main/res/layout/fragment_search_result.xml" value="0.1" />
         <entry key="..\:/Users/USER/MobileComputing/Project/app/src/main/res/layout/fragment_setting.xml" value="0.22" />

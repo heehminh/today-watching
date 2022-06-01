@@ -24,6 +24,10 @@
             android:name=".MainActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".home.MoreActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
