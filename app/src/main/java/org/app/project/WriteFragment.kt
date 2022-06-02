@@ -25,9 +25,6 @@ class WrtieFragment : Fragment() {
     ): View? {
         binding = FragmentWriteBinding.inflate(layoutInflater)
 
-        // 1) 글쓰면 db에 저장 -> Review에 저장
-        // 2) db에 저장된 글 ReviewFragment에서 불러오기
-
         reviewDB = ReviewDatabase.getInstance(requireContext())!!
         reviews.addAll(reviewDB.ReviewDao().getReviews())
 
@@ -50,9 +47,12 @@ class WrtieFragment : Fragment() {
 
     fun contentsClear() {
         binding.writeMovietitleEt.setText(" ")
-        binding.writeTextTv.setText(" ")
+        binding.wrtieTextEt.setText(" ")
         clickStar01()
     }
+
+    // 다시 누르면 다시 돌아오게
+    // 줄 간격 안맞음
 
     fun getRate() {
         binding.wrtieStarOff01Iv.setOnClickListener {
@@ -83,11 +83,11 @@ class WrtieFragment : Fragment() {
         binding.wrtieStar04Iv.visibility = View.VISIBLE
         binding.wrtieStar05Iv.visibility = View.VISIBLE
 
-        binding.wrtieStarOff01Iv.visibility = View.GONE
-        binding.wrtieStarOff02Iv.visibility = View.GONE
-        binding.wrtieStarOff03Iv.visibility = View.GONE
-        binding.wrtieStarOff04Iv.visibility = View.GONE
-        binding.wrtieStarOff05Iv.visibility = View.GONE
+        binding.wrtieStarOff01Iv.visibility = View.INVISIBLE
+        binding.wrtieStarOff02Iv.visibility = View.INVISIBLE
+        binding.wrtieStarOff03Iv.visibility = View.INVISIBLE
+        binding.wrtieStarOff04Iv.visibility = View.INVISIBLE
+        binding.wrtieStarOff05Iv.visibility = View.INVISIBLE
 
         binding.wrtieRateTv.text = (5.0).toString()
     }
@@ -97,12 +97,12 @@ class WrtieFragment : Fragment() {
         binding.wrtieStar02Iv.visibility = View.VISIBLE
         binding.wrtieStar03Iv.visibility = View.VISIBLE
         binding.wrtieStar04Iv.visibility = View.VISIBLE
-        binding.wrtieStar05Iv.visibility = View.GONE
+        binding.wrtieStar05Iv.visibility = View.INVISIBLE
 
-        binding.wrtieStarOff01Iv.visibility = View.GONE
-        binding.wrtieStarOff02Iv.visibility = View.GONE
-        binding.wrtieStarOff03Iv.visibility = View.GONE
-        binding.wrtieStarOff04Iv.visibility = View.GONE
+        binding.wrtieStarOff01Iv.visibility = View.INVISIBLE
+        binding.wrtieStarOff02Iv.visibility = View.INVISIBLE
+        binding.wrtieStarOff03Iv.visibility = View.INVISIBLE
+        binding.wrtieStarOff04Iv.visibility = View.INVISIBLE
         binding.wrtieStarOff05Iv.visibility = View.VISIBLE
 
         binding.wrtieRateTv.text = (4.0).toString()
@@ -112,12 +112,12 @@ class WrtieFragment : Fragment() {
         binding.wrtieStar01Iv.visibility = View.VISIBLE
         binding.wrtieStar02Iv.visibility = View.VISIBLE
         binding.wrtieStar03Iv.visibility = View.VISIBLE
-        binding.wrtieStar04Iv.visibility = View.GONE
-        binding.wrtieStar05Iv.visibility = View.GONE
+        binding.wrtieStar04Iv.visibility = View.INVISIBLE
+        binding.wrtieStar05Iv.visibility = View.INVISIBLE
 
-        binding.wrtieStarOff01Iv.visibility = View.GONE
-        binding.wrtieStarOff02Iv.visibility = View.GONE
-        binding.wrtieStarOff03Iv.visibility = View.GONE
+        binding.wrtieStarOff01Iv.visibility = View.INVISIBLE
+        binding.wrtieStarOff02Iv.visibility = View.INVISIBLE
+        binding.wrtieStarOff03Iv.visibility = View.INVISIBLE
         binding.wrtieStarOff04Iv.visibility = View.VISIBLE
         binding.wrtieStarOff05Iv.visibility = View.VISIBLE
 
@@ -127,12 +127,12 @@ class WrtieFragment : Fragment() {
     private fun clickStar02() {
         binding.wrtieStar01Iv.visibility = View.VISIBLE
         binding.wrtieStar02Iv.visibility = View.VISIBLE
-        binding.wrtieStar03Iv.visibility = View.GONE
-        binding.wrtieStar04Iv.visibility = View.GONE
-        binding.wrtieStar05Iv.visibility = View.GONE
+        binding.wrtieStar03Iv.visibility = View.INVISIBLE
+        binding.wrtieStar04Iv.visibility = View.INVISIBLE
+        binding.wrtieStar05Iv.visibility = View.INVISIBLE
 
-        binding.wrtieStarOff01Iv.visibility = View.GONE
-        binding.wrtieStarOff02Iv.visibility = View.GONE
+        binding.wrtieStarOff01Iv.visibility = View.INVISIBLE
+        binding.wrtieStarOff02Iv.visibility = View.INVISIBLE
         binding.wrtieStarOff03Iv.visibility = View.VISIBLE
         binding.wrtieStarOff04Iv.visibility = View.VISIBLE
         binding.wrtieStarOff05Iv.visibility = View.VISIBLE
@@ -142,12 +142,12 @@ class WrtieFragment : Fragment() {
 
     private fun clickStar01() {
         binding.wrtieStar01Iv.visibility = View.VISIBLE
-        binding.wrtieStar02Iv.visibility = View.GONE
-        binding.wrtieStar03Iv.visibility = View.GONE
-        binding.wrtieStar04Iv.visibility = View.GONE
-        binding.wrtieStar05Iv.visibility = View.GONE
+        binding.wrtieStar02Iv.visibility = View.INVISIBLE
+        binding.wrtieStar03Iv.visibility = View.INVISIBLE
+        binding.wrtieStar04Iv.visibility = View.INVISIBLE
+        binding.wrtieStar05Iv.visibility = View.INVISIBLE
 
-        binding.wrtieStarOff01Iv.visibility = View.GONE
+        binding.wrtieStarOff01Iv.visibility = View.INVISIBLE
         binding.wrtieStarOff02Iv.visibility = View.VISIBLE
         binding.wrtieStarOff03Iv.visibility = View.VISIBLE
         binding.wrtieStarOff04Iv.visibility = View.VISIBLE

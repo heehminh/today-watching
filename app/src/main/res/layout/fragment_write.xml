@@ -35,20 +35,10 @@
         android:hint="@string/frozen"
         android:imeOptions="actionSearch"
         android:textSize="18sp"
+        android:backgroundTint="@color/main_red"
         app:layout_constraintTop_toBottomOf="@id/write_back_iv"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="30dp"/>
-
-    <View
-        android:id="@+id/write_title_underview"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/main_red"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        app:layout_constraintTop_toBottomOf="@id/write_movietitle_et"
-        app:layout_constraintStart_toStartOf="@id/write_movietitle_et"
-        app:layout_constraintEnd_toEndOf="@id/write_movietitle_et"/>
     
     <ImageView
         android:id="@+id/wrtie_star_01_iv"
@@ -57,49 +47,45 @@
         android:src="@drawable/icon_star_on"
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/write_title_underview"/>
+        app:layout_constraintTop_toBottomOf="@id/write_movietitle_et"/>
 
     <ImageView
         android:id="@+id/wrtie_star_02_iv"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/icon_star_on"
-        android:layout_marginTop="10dp"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@id/wrtie_star_01_iv"
-        app:layout_constraintTop_toBottomOf="@id/write_title_underview"/>
+        app:layout_constraintTop_toTopOf="@id/wrtie_star_01_iv"/>
 
     <ImageView
         android:id="@+id/wrtie_star_03_iv"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/icon_star_on"
-        android:layout_marginTop="10dp"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@id/wrtie_star_02_iv"
-        app:layout_constraintTop_toBottomOf="@id/write_title_underview"/>
+        app:layout_constraintTop_toTopOf="@id/wrtie_star_01_iv"/>
 
     <ImageView
         android:id="@+id/wrtie_star_04_iv"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/icon_star_on"
-        android:layout_marginTop="10dp"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@id/wrtie_star_03_iv"
-        app:layout_constraintTop_toBottomOf="@id/write_title_underview"/>
+        app:layout_constraintTop_toTopOf="@id/wrtie_star_01_iv"/>
 
     <ImageView
         android:id="@+id/wrtie_star_05_iv"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/icon_star_on"
-        android:layout_marginTop="10dp"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@id/wrtie_star_04_iv"
-        app:layout_constraintTop_toBottomOf="@id/write_title_underview"/>
+        app:layout_constraintTop_toTopOf="@id/wrtie_star_01_iv"/>
 
     <ImageView
         android:id="@+id/wrtie_star_off_01_iv"
@@ -107,9 +93,9 @@
         android:layout_height="70dp"
         android:src="@drawable/icon_star_off"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/write_title_underview"
+        app:layout_constraintTop_toTopOf="@id/wrtie_star_01_iv"
+
         />
 
     <ImageView
@@ -117,9 +103,8 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/icon_star_off"
-        android:layout_marginTop="10dp"
         app:layout_constraintStart_toEndOf="@id/wrtie_star_off_01_iv"
-        app:layout_constraintTop_toBottomOf="@id/write_title_underview"
+        app:layout_constraintTop_toTopOf="@id/wrtie_star_off_01_iv"
         />
 
     <ImageView
@@ -127,27 +112,24 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/icon_star_off"
-        android:layout_marginTop="10dp"
         app:layout_constraintStart_toEndOf="@id/wrtie_star_off_02_iv"
-        app:layout_constraintTop_toBottomOf="@id/write_title_underview" />
+        app:layout_constraintTop_toTopOf="@id/wrtie_star_off_01_iv" />
 
     <ImageView
         android:id="@+id/wrtie_star_off_04_iv"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/icon_star_off"
-        android:layout_marginTop="10dp"
         app:layout_constraintStart_toEndOf="@id/wrtie_star_off_03_iv"
-        app:layout_constraintTop_toBottomOf="@id/write_title_underview" />
+        app:layout_constraintTop_toTopOf="@id/wrtie_star_off_01_iv" />
 
     <ImageView
         android:id="@+id/wrtie_star_off_05_iv"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/icon_star_off"
-        android:layout_marginTop="10dp"
         app:layout_constraintStart_toEndOf="@id/wrtie_star_off_04_iv"
-        app:layout_constraintTop_toBottomOf="@id/write_title_underview" />
+        app:layout_constraintTop_toTopOf="@id/wrtie_star_off_01_iv"/>
 
     <TextView
         android:id="@+id/wrtie_rate_tv"
@@ -157,6 +139,18 @@
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/main_red"
+        app:layout_constraintTop_toBottomOf="@id/wrtie_star_off_01_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 
     <Button
         android:id="@+id/wrtie_complete_btn"
@@ -173,8 +167,9 @@
     <EditText
         android:id="@+id/wrtie_text_et"
         android:layout_width="match_parent"
-        android:layout_height="330dp"
+        android:layout_height="250dp"
         android:layout_margin="30dp"
+        android:backgroundTint="@color/main_red"
         app:layout_constraintTop_toBottomOf="@id/wrtie_star_off_01_iv"
         app:layout_constraintBottom_toTopOf="@id/wrtie_complete_btn"
         android:hint="@string/more"
