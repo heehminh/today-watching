@@ -1,10 +1,8 @@
 package org.app.project.home
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
+@Dao
 interface MovieDao {
     @Insert
     fun insert(movie: Movie)

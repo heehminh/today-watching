@@ -1,6 +1,7 @@
 package org.app.project.home
 
 import android.content.Context.MODE_PRIVATE
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -25,17 +26,6 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(layoutInflater)
 
-
-        // TODO: 2022-05-27 넷플릭스 api 연동해서 수정하기
-//        movieDatas.apply {
-//            add(Movie("겨울왕국", R.drawable.data_movie_image, false))
-//            add(Movie("김민희", R.drawable.data_movie_image, false))
-//            add(Movie("굿플레이스", R.drawable.data_movie_image, true))
-//            add(Movie("네버해브아이에버", R.drawable.data_movie_image, false))
-//            add(Movie("인터스텔라", R.drawable.data_movie_image, true))
-//            add(Movie("안나", R.drawable.data_movie_image, false))
-//        }
-
         // 더미데이터와 Adapter 연결
         val movieRVAdapter = MovieRVAdapter(movieDatas)
         binding.homeRecyclerview.adapter = movieRVAdapter
@@ -44,7 +34,6 @@ class HomeFragment : Fragment() {
         movieRVAdapter.setMyItemClickListener(object: MovieRVAdapter.MyItemClickListener{
             override fun onItemClick(movie: Movie) {
                 changeMoreFragment(movie)
-                // changeWishFragment(movie)
             }
 
             private fun changeMoreFragment(movie: Movie) {
@@ -62,11 +51,10 @@ class HomeFragment : Fragment() {
                     .commitAllowingStateLoss()
             }
 
-            override fun onRemoveAlbum(position: Int) {
+            override fun onRemoveMovie(position: Int) {
                 movieRVAdapter.removeItem(position)
             }
         })
-
 
         return binding.root
     }

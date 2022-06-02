@@ -11,7 +11,7 @@ class MovieRVAdapter(private val movieList: ArrayList<Movie>) :
 
     interface MyItemClickListener{
         fun onItemClick(movie: Movie)
-        fun onRemoveAlbum(position: Int)
+        fun onRemoveMovie(position: Int)
     }
 
     private lateinit var mItemClickListener: MyItemClickListener
@@ -51,29 +51,26 @@ class MovieRVAdapter(private val movieList: ArrayList<Movie>) :
 
     override fun getItemCount(): Int = movieList.size
 
-    // ViewHolder
+    // ViewHolder 이거다시다시
+    // TODO: 2022-06-02 다시해!!
     inner class ViewHolder(val binding: ItemMovieMoreBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(movie: Movie) {
             binding.moreText.text = movie.title
             binding.moreImage.setImageResource(movie.image!!)
-            if (movie.like==true) {
+            if (movie.islike) {
                 binding.moreLikeOn.visibility = View.VISIBLE
-                binding.moreLikeOff.visibility = View.GONE
+                //binding.moreLikeOff.visibility = View.GONE
             } else {
                 binding.moreLikeOn.visibility = View.GONE
-                binding.moreLikeOff.visibility = View.VISIBLE
+                //binding.moreLikeOff.visibility = View.VISIBLE
             }
 
             binding.moreLikeOn.setOnClickListener {
                 binding.moreLikeOn.visibility = View.INVISIBLE
-                binding.moreLikeOff.visibility = View.VISIBLE
-                movie.like = false
+                //binding.moreLikeOff.visibility = View.VISIBLE
+                movie.islike = false
             }
-            binding.moreLikeOff.setOnClickListener {
-                binding.moreLikeOn.visibility = View.VISIBLE
-                binding.moreLikeOff.visibility = View.INVISIBLE
-                movie.like = true
-            }
+
         }
     }
 }

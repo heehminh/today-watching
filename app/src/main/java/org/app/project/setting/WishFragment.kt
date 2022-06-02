@@ -5,15 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import org.app.project.MainActivity
 import org.app.project.R
 import org.app.project.databinding.FragmentWishBinding
 import org.app.project.home.Movie
+import org.app.project.home.MovieDatabase
+import org.app.project.home.MovieRVAdapter
 
 class WishFragment : Fragment() {
     lateinit var binding: FragmentWishBinding
     private var gson: Gson = Gson()
+    lateinit var movieDB: MovieDatabase
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -21,9 +25,10 @@ class WishFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentWishBinding.inflate(inflater, container, false)
+        movieDB = MovieDatabase.getInstance(requireContext())!!
 
-        val movieData = arguments?.getString("title")
-        val movie = gson.fromJson(movieData, Movie::class.java)
+//        val movieData = arguments?.getString("title")
+//        val movie = gson.fromJson(movieData, Movie::class.java)
 
         // setInit(movie)
 
@@ -32,8 +37,30 @@ class WishFragment : Fragment() {
                 .replace(R.id.main_frm, SettingFragment())
                 .commitAllowingStateLoss()
         }
+        movieDB = MovieDatabase.getInstance(requireContext())!!
 //
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        initRecyclerview()
+    }
+
+    private fun initRecyclerview() {
+        binding.wishRecyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        val wishRVAdpater = WishRVAdapter()
+
+        wishRVAdpater.setMyItemClickListener(object: WishRVAdapter.MyItemClickListener {
+            override fun onRemoveItem(movieId: Int) {
+               movieDB.MovieDao().updateIsLikeById(false, movieId)
+            }
+        })
+
+        binding.wishRecyclerview.adapter = wishRVAdpater
+        wishRVAdpater.addMovies(movieDB.MovieDao().getLikedMovies(true) as ArrayList)
+
     }
 
 //    private fun setInit(movie: Movie) {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project</string>
+    <string name="app_name">오늘뭐보지</string>
 
     <string name="string_home">홈</string>
     <string name="string_write">글쓰기</string>
@@ -27,5 +27,10 @@
 
 <!--    fragment_home-->
     <string name="text">이런 작품 어때요?</string>
+
+<!--    fragment_write-->
+    <string name="write_title">후기 작성</string>
+    <string name="write_complete">작성 완료</string>
+    <string name="write_rate">0.0</string>
 
 </resources>

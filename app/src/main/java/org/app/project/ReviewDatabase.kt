@@ -1,25 +1,25 @@
-package org.app.project.home
+package org.app.project
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Movie::class], version = 1)
-abstract class MovieDatabase: RoomDatabase() {
-    abstract fun MovieDao(): MovieDao
+@Database(entities = [Review::class], version = 1)
+abstract class ReviewDatabase: RoomDatabase() {
+    abstract fun ReviewDao(): ReviewDao
 
     companion object {
-        private var instance: MovieDatabase? = null
+        private var instance: ReviewDatabase? = null
 
         @Synchronized
-        fun getInstance(context: Context): MovieDatabase? {
+        fun getInstance(context: Context): ReviewDatabase? {
             if (instance == null) {
-                synchronized(MovieDatabase::class) {
+                synchronized(ReviewDatabase::class) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        MovieDatabase::class.java,
-                        "movie-database"
+                        ReviewDatabase::class.java,
+                        "review-database"
                     ).allowMainThreadQueries().build()
                 }
             }

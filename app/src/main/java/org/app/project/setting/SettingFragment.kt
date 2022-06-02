@@ -1,6 +1,5 @@
 package org.app.project.setting
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import org.app.project.MainActivity
 import org.app.project.R
 import org.app.project.databinding.FragmentSettingBinding
-import org.app.project.home.HomeFragment
 
 class SettingFragment : Fragment() {
     lateinit var binding: FragmentSettingBinding

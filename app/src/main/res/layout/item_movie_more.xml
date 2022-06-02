@@ -37,14 +37,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:visibility="visible"/>
 
-        <ImageView
-            android:id="@+id/more_like_off"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/icon_like_off"
-            app:layout_constraintTop_toTopOf="@id/more_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="invisible"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
