@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:src="@drawable/data_movie_image"
-        android:scaleType="fitXY" />
+        android:scaleType="centerCrop" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/more_constraint"
@@ -20,7 +20,7 @@
 
         <TextView
             android:id="@+id/more_text"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="40dp"
             android:text="@string/frozen"
             android:textSize="24sp"
@@ -36,6 +36,15 @@
             app:layout_constraintTop_toTopOf="@id/more_text"
             app:layout_constraintEnd_toEndOf="parent"
             android:visibility="visible"/>
+
+        <ImageView
+            android:id="@+id/more_like_off"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/icon_like_off"
+            app:layout_constraintTop_toTopOf="@id/more_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="invisible"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

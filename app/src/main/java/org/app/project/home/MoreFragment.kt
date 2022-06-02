@@ -1,5 +1,7 @@
 package org.app.project.home
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -42,13 +44,14 @@ class MoreFragment: Fragment() {
             movie.islike = true
         }
 
-        binding.moreBackIv.setOnClickListener { 
+        binding.moreBackIv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.main_frm, HomeFragment())
                 .commitAllowingStateLoss()
         }
 
         setInit(movie)
+        clickShareBtn(movie)
 
 //        initMovieList()
 //        initMovie()
@@ -62,7 +65,7 @@ class MoreFragment: Fragment() {
         binding.moreMovieImageIv.setImageResource(movie.image!!)
         binding.moreMovieTitleTv.text = movie.title
 
-        if (movie.islike == true) {
+        if (movie.islike) {
             binding.moreLikeOnIv.visibility = View.VISIBLE
             binding.moreLikeOffIv.visibility = View.INVISIBLE
         } else {
@@ -70,8 +73,26 @@ class MoreFragment: Fragment() {
             binding.moreLikeOffIv.visibility = View.VISIBLE
         }
 
-        binding.moreMovieTextTv.text = "일단은 입력없나봄 나도 어떻게 하는지 모르겠고 내가 할 수 있는 한 최선을 다해서 해볼게.. 일단은 입력없나봄 나도 어떻게 하는지 모르겠고 내가 할 수 있는 한 최선을 다해서 해볼게..일단은 입력없나봄 나도 어떻게 하는지 모르겠고 내가 할 수 있는 한 최선을 다해서 해볼게..일단은 입력없나봄 나도 어떻게 하는지 모르겠고 내가 할 수 있는 한 최선을 다해서 해볼게.."
+        binding.moreMovieTextTv.text = movie?.text
+
     }
+
+    private fun clickShareBtn(movie: Movie) {
+        binding.moreMovieSharingIv.setOnClickListener {
+            try {
+                val sendText = "오늘뭐보지의 추천작: " + movie.title + "-" + movie?.text.toString()
+                val sendIntent = Intent()
+                sendIntent.action = Intent.ACTION_SEND
+                sendIntent.putExtra(Intent.EXTRA_TEXT, sendText)
+                sendIntent.type = "text/plain"
+                startActivity(Intent.createChooser(sendIntent, "share"))
+            } catch (ignored: ActivityNotFoundException) {
+                Log.d("MYTAG", "ignored: $ignored")
+            }
+        }
+    }
+}
+
 
 //    override fun onPause() {
 //        super.onPause()
@@ -130,5 +151,5 @@ class MoreFragment: Fragment() {
 //        movies.addAll(movieDB.MovieDao().getMovies())
 //
 //    }
-
-}
+//
+//}
