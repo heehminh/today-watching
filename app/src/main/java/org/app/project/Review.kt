@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "ReviewTable")
 data class Review(
     var title: String,
-    var rate: Int,
+    var rate: String,
     var text: String?= null
 ){
     @PrimaryKey(autoGenerate = true)var id: Int = 0
