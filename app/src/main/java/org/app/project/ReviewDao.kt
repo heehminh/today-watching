@@ -1,7 +1,6 @@
 package org.app.project
 
 import androidx.room.*
-import org.app.project.home.Movie
 
 @Dao
 interface ReviewDao {

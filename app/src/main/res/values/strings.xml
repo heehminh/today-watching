@@ -13,10 +13,7 @@
     <string name="title">작품검색</string>
     <string name="frozen">겨울왕국</string>
     <string name="more">
-        겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다.
-        겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다.
-        겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다.
-        겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다. 겨울왕국 설명입니다.
+        리뷰를 작성해주세요
     </string>
     
 <!--    fragment_setting-->
@@ -57,8 +54,38 @@
     <string name="movie06_text">정체불명 단발머리 주방장 ‘거석이형’(마동석)을 만난 어설픈 반항아 ‘택일’(박정민)과
 무작정 사회로 뛰어든 의욕충만 반항아 ‘상필’(정해인)이 진짜 세상을 맛보는 유쾌한 이야기를 그린 작품이다.</string>
 
+    <string-array name="titles_array">
+        <item>스내치</item>
+        <item>스미스씨 워싱턴에 가다</item>
+        <item>스윙걸즈</item>
+        <item>스윙키즈</item>
+        <item>스쿨 오브 락</item>
+        <item>스타워즈 에피소드 1: 보이지 않는 위험</item>
+        <item>스타워즈 에피소드 2: 클론의 습격</item>
+        <item>스타워즈 에피소드 3: 시스의 복수</item>
+        <item>스타워즈 에피소드 4: 새로운 희망</item>
+        <item>스타워즈 에피소드 5: 제국의 역습</item>
+        <item>스타워즈 에피소드 6: 제다이의 귀환</item>
+        <item>스타워즈: 깨어난 포스</item>
+        <item>스타워즈: 더 라스트 제다이</item>
+        <item>스타워즈: 라이즈 오브 스카이워커</item>
+        <item>스파이더맨</item>
+        <item>스파이더맨 2</item>
+        <item>스파이더맨 3</item>
+        <item>스파이더맨: 뉴 유니버스</item>
+        <item>스파이더맨: 파 프롬 홈</item>
+        <item>스파이더맨: 홈커밍</item>
+        <item>스펜서</item>
+        <item>스포트라이트</item>
+        <item>스플라이스</item>
+        <item>스플릿</item>
+        <item>스피드</item>
+        <item>승리호</item>
+    </string-array>
 
-
+    <string name="review_item_title">스파이더맨: 파 프로 홈</string>
+    <string name="review_item_rating">4.0</string>
+    <string name="review_item_date">2022-06-03</string>
 
 
 </resources>

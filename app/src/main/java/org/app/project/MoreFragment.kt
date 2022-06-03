@@ -1,4 +1,4 @@
-package org.app.project.home
+package org.app.project
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -7,11 +7,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
-import org.app.project.MainActivity
-import org.app.project.R
 import org.app.project.databinding.FragmentMoreBinding
 
 class MoreFragment: Fragment() {

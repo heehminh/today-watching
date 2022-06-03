@@ -1,4 +1,4 @@
-package org.app.project.home
+package org.app.project
 
 import android.view.LayoutInflater
 import android.view.View

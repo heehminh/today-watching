@@ -1,4 +1,4 @@
-package org.app.project.home
+package org.app.project
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

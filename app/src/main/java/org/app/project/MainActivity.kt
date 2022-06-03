@@ -5,11 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import org.app.project.databinding.ActivityMainBinding
-import org.app.project.home.HomeFragment
-import org.app.project.home.Movie
-import org.app.project.home.MovieDatabase
 import org.app.project.search.WrtieFragment
-import org.app.project.setting.SettingFragment
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding

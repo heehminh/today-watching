@@ -1,13 +1,9 @@
-package org.app.project.setting
+package org.app.project
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
-import org.app.project.R
 import org.app.project.databinding.ItemMovieMoreBinding
-import org.app.project.home.Movie
-import org.app.project.home.MovieRVAdapter
 
 class WishRVAdapter():
     RecyclerView.Adapter<WishRVAdapter.ViewHolder>(){
@@ -24,12 +20,12 @@ class WishRVAdapter():
         mItemClickListener = itemClickListener
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): WishRVAdapter.ViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val binding: ItemMovieMoreBinding = ItemMovieMoreBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: WishRVAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(items[position])
 
     }

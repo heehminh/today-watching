@@ -10,7 +10,8 @@ import androidx.room.PrimaryKey
 data class Review(
     var title: String,
     var rate: String,
-    var text: String?= null
+    var text: String?= null,
+    var date: String
 ){
     @PrimaryKey(autoGenerate = true)var id: Int = 0
 }

@@ -1,12 +1,10 @@
-package org.app.project.setting
+package org.app.project
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import org.app.project.MainActivity
-import org.app.project.R
 import org.app.project.databinding.FragmentSettingBinding
 
 class SettingFragment : Fragment() {

@@ -1,4 +1,4 @@
-package org.app.project.setting
+package org.app.project
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
-import org.app.project.MainActivity
-import org.app.project.R
 import org.app.project.databinding.FragmentWishBinding
-import org.app.project.home.Movie
-import org.app.project.home.MovieDatabase
-import org.app.project.home.MovieRVAdapter
 
 class WishFragment : Fragment() {
     lateinit var binding: FragmentWishBinding
