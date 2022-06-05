@@ -32,8 +32,8 @@ class WishFragment : Fragment() {
                 .replace(R.id.main_frm, SettingFragment())
                 .commitAllowingStateLoss()
         }
-        movieDB = MovieDatabase.getInstance(requireContext())!!
-//
+        // movieDB.MovieDao().getMovies()
+
         return binding.root
     }
 
@@ -57,19 +57,6 @@ class WishFragment : Fragment() {
         wishRVAdpater.addMovies(movieDB.MovieDao().getLikedMovies(true) as ArrayList)
 
     }
-
-//    private fun setInit(movie: Movie) {
-//        binding.moreMovieImageIv.setImageResource(movie.image)
-//        binding.moreMovieTitleTv.text = movie.title.toString()
-//        if (movie.like == true) {
-//            binding.moreLikeOnIv.visibility = View.VISIBLE
-//            binding.moreLikeOffIv.visibility = View.INVISIBLE
-//        } else {
-//            binding.moreLikeOnIv.visibility = View.INVISIBLE
-//            binding.moreLikeOffIv.visibility = View.VISIBLE
-//        }
-//        binding.moreMovieTextTv.text = "일단은 입력없나봄 나도 어떻게 하는지 모르겠고 내가 할 수 있는 한 최선을 다해서 해볼게.. 일단은 입력없나봄 나도 어떻게 하는지 모르겠고 내가 할 수 있는 한 최선을 다해서 해볼게..일단은 입력없나봄 나도 어떻게 하는지 모르겠고 내가 할 수 있는 한 최선을 다해서 해볼게..일단은 입력없나봄 나도 어떻게 하는지 모르겠고 내가 할 수 있는 한 최선을 다해서 해볼게.."
-//    }
 
 }
 
