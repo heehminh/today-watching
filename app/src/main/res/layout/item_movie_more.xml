@@ -29,22 +29,12 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <ImageView
-            android:id="@+id/more_like_on"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/icon_like"
-            app:layout_constraintTop_toTopOf="@id/more_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="visible"/>
-
-        <ImageView
-            android:id="@+id/more_like_off"
+            android:id="@+id/more_like"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/icon_like_off"
             app:layout_constraintTop_toTopOf="@id/more_text"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="invisible"/>
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,7 @@ import org.app.project.databinding.FragmentWishBinding
 
 class WishFragment : Fragment() {
     lateinit var binding: FragmentWishBinding
-    private var gson: Gson = Gson()
+    private var wishDatas = ArrayList<Movie>()
     lateinit var movieDB: MovieDatabase
 
     override fun onCreateView(
@@ -22,40 +22,34 @@ class WishFragment : Fragment() {
         binding = FragmentWishBinding.inflate(inflater, container, false)
         movieDB = MovieDatabase.getInstance(requireContext())!!
 
-//        val movieData = arguments?.getString("title")
-//        val movie = gson.fromJson(movieData, Movie::class.java)
+        wishDatas.addAll(movieDB.MovieDao().getMovies())
 
-        // setInit(movie)
 
         binding.wishBackIv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.main_frm, SettingFragment())
                 .commitAllowingStateLoss()
         }
-        // movieDB.MovieDao().getMovies()
 
         return binding.root
     }
 
-    override fun onStart() {
+    override fun onStart(){
         super.onStart()
         initRecyclerview()
     }
 
-    private fun initRecyclerview() {
+    private fun initRecyclerview(){
         binding.wishRecyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        val wishRVAdapter = WishRVAdapter()
 
-        val wishRVAdpater = WishRVAdapter()
-
-        wishRVAdpater.setMyItemClickListener(object: WishRVAdapter.MyItemClickListener {
+        wishRVAdapter.setMyItemClickListener(object : WishRVAdapter.MyItemClickListener{
             override fun onRemoveItem(movieId: Int) {
-               movieDB.MovieDao().updateIsLikeById(false, movieId)
+                movieDB.MovieDao().updateIsLikeById(false, movieId)
             }
         })
-
-        binding.wishRecyclerview.adapter = wishRVAdpater
-        wishRVAdpater.addMovies(movieDB.MovieDao().getLikedMovies(true) as ArrayList)
-
+        binding.wishRecyclerview.adapter = wishRVAdapter
+        wishRVAdapter.addMovies(movieDB.MovieDao().getLikedMovies(true) as ArrayList<Movie>)
     }
 
 }

@@ -1,14 +1,14 @@
 package org.app.project
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import org.app.project.databinding.ItemMovieMoreBinding
+import org.app.project.databinding.ItemWishMovieBinding
 
 class WishRVAdapter():
     RecyclerView.Adapter<WishRVAdapter.ViewHolder>(){
-
-    private val items = ArrayList<Movie>()
+    private val wishList = ArrayList<Movie>()
 
     interface MyItemClickListener{
         fun onRemoveItem(movieId: Int)
@@ -21,41 +21,35 @@ class WishRVAdapter():
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val binding: ItemMovieMoreBinding = ItemMovieMoreBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        val binding: ItemWishMovieBinding = ItemWishMovieBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(wishList[position])
+        holder.binding.itemDeleteIv.setOnClickListener { mItemClickListener.onRemoveItem(position) }
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = wishList.size
 
     fun addMovies(movies: ArrayList<Movie>){
-        this.items.clear()
-        this.items.addAll(items)
+        this.wishList.clear()
+        this.wishList.addAll(movies)
 
         notifyDataSetChanged()
     }
 
-    fun removeMovie(position: Int){
-        items.removeAt(position)
+    fun removeWish(position: Int) {
+        wishList.removeAt(position)
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(val binding: ItemMovieMoreBinding): RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(val binding: ItemWishMovieBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(movie: Movie) {
-            binding.moreText.text = movie.title
-            binding.moreImage.setImageResource(movie.image!!)
-            if (movie.islike) {
-                binding.moreLikeOn.setImageResource(R.drawable.icon_like_off)
-            } else {
-                binding.moreLikeOn.setImageResource(R.drawable.icon_like)
-            }
-
+            binding.itemWishTitleTv.text = movie.title
+            binding.itemWishTextTv.text = movie.text
+            binding.itemWishImageIv.setImageResource(movie.image!!)
         }
     }
-
-
 }

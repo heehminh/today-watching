@@ -1,17 +1,17 @@
 package org.app.project
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import org.app.project.databinding.ItemMovieMoreBinding
 
-class MovieRVAdapter(private val movieList: ArrayList<Movie>) :
+class MovieRVAdapter(private val movies: ArrayList<Movie>) :
     RecyclerView.Adapter<MovieRVAdapter.ViewHolder>() {
 
     interface MyItemClickListener{
         fun onItemClick(movie: Movie)
-        fun onRemoveMovie(position: Int)
     }
 
     private lateinit var mItemClickListener: MyItemClickListener
@@ -20,61 +20,42 @@ class MovieRVAdapter(private val movieList: ArrayList<Movie>) :
         mItemClickListener = itemClickListener
     }
 
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): MovieRVAdapter.ViewHolder {
         val binding: ItemMovieMoreBinding = ItemMovieMoreBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(movieList[position])
-        // itemView가 클릭되었을때 이벤트 처리
-        holder.itemView.setOnClickListener { mItemClickListener.onItemClick(movieList[position]) }
+    override fun onBindViewHolder(holder: MovieRVAdapter.ViewHolder, position: Int) {
+        holder.bind(movies[position])
+        holder.itemView.setOnClickListener { mItemClickListener.onItemClick(movies[position]) }
     }
 
-    fun addItems(movies: ArrayList<Movie>) {
-        movieList.clear()
-        movieList.addAll(movies)
-        notifyDataSetChanged()
-    }
-    fun addItem(movie: Movie) {
-        movieList.add(movie)
-        notifyDataSetChanged()
-    }
-    fun removeItems() {
-        movieList.clear()
-        notifyDataSetChanged()
-    }
-    fun removeItem(position: Int) {
-        movieList.removeAt(position)
+    override fun getItemCount(): Int = movies.size
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addSongs(movies: ArrayList<Movie>) {
+        this.movies.clear()
+        this.movies.addAll(movies)
+
         notifyDataSetChanged()
     }
 
-    override fun getItemCount(): Int = movieList.size
+    fun removeMovie(position: Int){
+        movies.removeAt(position)
+        notifyDataSetChanged()
+    }
 
-    inner class ViewHolder(val binding: ItemMovieMoreBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(movie: Movie) {
+    inner class ViewHolder(val binding: ItemMovieMoreBinding) : RecyclerView.ViewHolder(binding.root){
+        fun bind(movie: Movie){
             binding.moreText.text = movie.title
             binding.moreImage.setImageResource(movie.image!!)
             if (movie.islike) {
-                binding.moreLikeOn.visibility = View.VISIBLE
-                binding.moreLikeOff.visibility = View.INVISIBLE
+                binding.moreLike.setImageResource(R.drawable.icon_like)
             } else {
-                binding.moreLikeOn.visibility = View.INVISIBLE
-                binding.moreLikeOff.visibility = View.VISIBLE
+                binding.moreLike.setImageResource(R.drawable.icon_like_off)
             }
-
-            binding.moreLikeOn.setOnClickListener {
-                binding.moreLikeOn.visibility = View.INVISIBLE
-                binding.moreLikeOff.visibility = View.VISIBLE
-                movie.islike = false
-            }
-
-            binding.moreLikeOff.setOnClickListener {
-                binding.moreLikeOn.visibility = View.VISIBLE
-                binding.moreLikeOff.visibility = View.INVISIBLE
-                movie.islike = true
-            }
-
         }
     }
+
 }
