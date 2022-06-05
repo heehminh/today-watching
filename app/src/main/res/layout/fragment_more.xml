@@ -19,24 +19,13 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <ImageView
-        android:id="@+id/more_like_on_iv"
+        android:id="@+id/more_like_iv"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="30dp"
-        android:src="@drawable/icon_like"
+        android:src="@drawable/icon_like_off"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="visible"/>
-
-    <ImageView
-        android:id="@+id/more_like_off_iv"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_margin="30dp"
-        android:src="@drawable/icon_like"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="invisible"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/more_movie_image_iv"

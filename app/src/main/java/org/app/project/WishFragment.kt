@@ -22,8 +22,6 @@ class WishFragment : Fragment() {
         binding = FragmentWishBinding.inflate(inflater, container, false)
         movieDB = MovieDatabase.getInstance(requireContext())!!
 
-        wishDatas.addAll(movieDB.MovieDao().getMovies())
-
 
         binding.wishBackIv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()

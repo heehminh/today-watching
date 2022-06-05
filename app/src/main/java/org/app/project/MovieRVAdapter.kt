@@ -50,11 +50,7 @@ class MovieRVAdapter(private val movies: ArrayList<Movie>) :
         fun bind(movie: Movie){
             binding.moreText.text = movie.title
             binding.moreImage.setImageResource(movie.image!!)
-            if (movie.islike) {
-                binding.moreLike.setImageResource(R.drawable.icon_like)
-            } else {
-                binding.moreLike.setImageResource(R.drawable.icon_like_off)
-            }
+
         }
     }
 

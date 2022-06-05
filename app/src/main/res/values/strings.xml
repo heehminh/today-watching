@@ -23,7 +23,8 @@
     <string name="notify">공지사항</string>
 
 <!--    fragment_home-->
-    <string name="text">이런 작품 어때요?</string>
+    <string name="home_text">이런 작품 어때요?</string>
+    <string name="home_text02">어디서도 볼 수 없는 오늘뭐보지의 추천작, 지금 만나보세요</string>
 
 <!--    fragment_write-->
     <string name="write_title">후기 작성</string>

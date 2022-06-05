@@ -1,6 +1,7 @@
 package org.app.project
 
 import android.content.ActivityNotFoundException
+import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -30,48 +31,35 @@ class MoreFragment: Fragment() {
         val movie = gson.fromJson(movieData, Movie::class.java)
 
 
-        binding.moreLikeOnIv.setOnClickListener {
-            binding.moreLikeOnIv.visibility = View.INVISIBLE
-            binding.moreLikeOffIv.visibility = View.VISIBLE
-            movie.islike = false
-        }
-        binding.moreLikeOffIv.setOnClickListener {
-            binding.moreLikeOnIv.visibility = View.VISIBLE
-            binding.moreLikeOffIv.visibility = View.INVISIBLE
-            movie.islike = true
-        }
-
         binding.moreBackIv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.main_frm, HomeFragment())
                 .commitAllowingStateLoss()
         }
 
-        setInit(movie)
+        initMovieList()
+        initMovie()
+        initClickListenr()
         clickShareBtn(movie)
+        // setInit(movie)
 
-//        initMovieList()
-//        initMovie()
-//        initClickListener()
 
         return binding.root
     }
 
     private fun setInit(movie: Movie) {
+
         Log.d("MYTAG", "title $movie.title like $movie.like")
         binding.moreMovieImageIv.setImageResource(movie.image!!)
         binding.moreMovieTitleTv.text = movie.title
 
         if (movie.islike) {
-            binding.moreLikeOnIv.visibility = View.VISIBLE
-            binding.moreLikeOffIv.visibility = View.INVISIBLE
+            binding.moreLikeIv.setImageResource(R.drawable.icon_like)
         } else {
-            binding.moreLikeOnIv.visibility = View.INVISIBLE
-            binding.moreLikeOffIv.visibility = View.VISIBLE
+            binding.moreLikeIv.setImageResource(R.drawable.icon_like_off)
         }
 
         binding.moreMovieTextTv.text = movie?.text
-
     }
 
     private fun clickShareBtn(movie: Movie) {
@@ -88,65 +76,45 @@ class MoreFragment: Fragment() {
             }
         }
     }
+
+    private fun initMovieList() {
+        movieDB = MovieDatabase.getInstance(requireContext())!!
+        movies.addAll(movieDB.MovieDao().getMovies())
+    }
+
+    private fun initMovie() {
+        val spf = this.activity?.getSharedPreferences("movie", MODE_PRIVATE)
+        val movieId = spf?.getInt("movieId", 0)
+
+        nowPos = getPosition(movieId)
+
+        setInit(movies[nowPos])
+    }
+
+    private fun getPosition(movieId: Int?): Int {
+        for (i in 0 until movies.size){
+            if (movies[i].id == movieId){
+                return i
+            }
+        }
+        return 0
+    }
+
+    private fun initClickListenr() {
+        binding.moreLikeIv.setOnClickListener {
+            setLike(movies[nowPos].islike)
+        }
+    }
+
+    private fun setLike(isLike: Boolean) {
+        movies[nowPos].islike = !isLike
+        movieDB.MovieDao().updateIsLikeById(!isLike, movies[nowPos].id)
+
+        if (isLike) {
+            binding.moreLikeIv.setImageResource(R.drawable.icon_like_off)
+        } else {
+            binding.moreLikeIv.setImageResource(R.drawable.icon_like)
+        }
+    }
+
 }
-
-
-//    override fun onPause() {
-//        super.onPause()
-//
-//        val sharedPreferences = getSharedPreferences("movie", AppCompatActivity.MODE_PRIVATE)
-//        val editor = sharedPreferences.edit()
-//
-//        editor.putInt("movieId", movies[nowPos].id)
-//        editor.apply()
-//    }
-//
-//    private fun initMovie() {
-//        val spf = getSharedPreferences("movie", AppCompatActivity.MODE_PRIVATE)
-//        val movieId = spf.getInt("movieId", 0)
-//
-//        nowPos = getPlayingMoviePosition(movieId)
-//        setMovie(movies[nowPos])
-//    }
-//
-//    private fun getPlayingMoviePosition(movieId: Int): Int {
-//        for (i in 0 until movies.size) {
-//            if (movies[i].id == movieId) {
-//                return 1
-//            }
-//        }
-//        return 0
-//    }
-//
-//    private fun setMovie(movie: Movie) {
-//        val content = resources.getIdentifier(movie.content, "raw", this.packageName)
-//
-//        binding.moreMovieTitleTv.text = movie.title
-//        binding.moreMovieImageIv.setImageResource(movie.image!!)
-//        binding.moreMovieTextTv.text = movie.text
-//
-//        if (movie.islike) {
-//            binding.moreLikeOnIv.setImageResource(R.drawable.icon_like)
-//        } else {
-//            binding.moreLikeOnIv.setImageResource(R.drawable.icon_like_off)
-//        }
-//    }
-//
-//    private fun initClickListener() {
-//        binding.moreLikeOnIv.setOnClickListener {
-//            setLike(movies[nowPos].islike)
-//        }
-//    }
-//
-//    private fun setLike(islike: Boolean) {
-//        movies[nowPos].islike = !islike
-//        movieDB.MovieDao().updateIsLikeById(!islike, movies[nowPos].id)
-//    }
-//
-//    private fun initMovieList() {
-//        movieDB = MovieDatabase.getInstance(this)!!
-//        movies.addAll(movieDB.MovieDao().getMovies())
-//
-//    }
-//
-//}
