@@ -1,6 +1,7 @@
 package org.app.project
 
 import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -59,19 +60,21 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        val spf = this.activity?.getSharedPreferences("movie", MODE_PRIVATE)
-        val movieId = spf?.getInt("movieId", 0)
+//        val editor = this.requireActivity().getSharedPreferences("movieSpf", MODE_PRIVATE).edit()
+//        editor.putInt("movieId", movie.id)
+//        editor.apply()
+        val spf = this.requireActivity().getSharedPreferences("movieSpf", MODE_PRIVATE)
+        val movieId = spf.getInt("movieId", 0)
 
         val movieDB = MovieDatabase.getInstance(requireContext())!!
-
         movie = if (movieId == 0) {
             movieDB.MovieDao().getMovie(1)
         } else {
             movieDB.MovieDao().getMovie(movieId)
         }
 
+        Log.d("Home_MovieId", movie.id.toString())
     }
-
 
     private fun inputDummyMovies(){
         val movieDB = MovieDatabase.getInstance(requireContext())!!
@@ -94,6 +97,7 @@ class HomeFragment : Fragment() {
         Log.d("MYHOMETAG", _movies.toString())
     }
 }
+
 
 
 

@@ -19,6 +19,7 @@ class MoreFragment: Fragment() {
     private var movies = ArrayList<Movie>()
     private var nowPos = 0
     private lateinit var movieDB: MovieDatabase
+    private lateinit var movie: Movie
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +29,7 @@ class MoreFragment: Fragment() {
         binding = FragmentMoreBinding.inflate(inflater, container, false)
 
         val movieData = arguments?.getString("title")
-        val movie = gson.fromJson(movieData, Movie::class.java)
+        movie = gson.fromJson(movieData, Movie::class.java)
 
 
         binding.moreBackIv.setOnClickListener {
@@ -41,23 +42,15 @@ class MoreFragment: Fragment() {
         initMovie()
         initClickListenr()
         clickShareBtn(movie)
-        // setInit(movie)
-
 
         return binding.root
     }
 
     private fun setInit(movie: Movie) {
 
-        Log.d("MYTAG", "title $movie.title like $movie.like")
+        Log.d("MYTAG", "title $movie")
         binding.moreMovieImageIv.setImageResource(movie.image!!)
         binding.moreMovieTitleTv.text = movie.title
-
-        if (movie.islike) {
-            binding.moreLikeIv.setImageResource(R.drawable.icon_like)
-        } else {
-            binding.moreLikeIv.setImageResource(R.drawable.icon_like_off)
-        }
 
         binding.moreMovieTextTv.text = movie?.text
     }
@@ -83,22 +76,12 @@ class MoreFragment: Fragment() {
     }
 
     private fun initMovie() {
-        val spf = this.activity?.getSharedPreferences("movie", MODE_PRIVATE)
-        val movieId = spf?.getInt("movieId", 0)
 
-        nowPos = getPosition(movieId)
-
+        nowPos = movie.id -1
+        Log.d("now Movie Id", nowPos.toString())
         setInit(movies[nowPos])
     }
 
-    private fun getPosition(movieId: Int?): Int {
-        for (i in 0 until movies.size){
-            if (movies[i].id == movieId){
-                return i
-            }
-        }
-        return 0
-    }
 
     private fun initClickListenr() {
         binding.moreLikeIv.setOnClickListener {
