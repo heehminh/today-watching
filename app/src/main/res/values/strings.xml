@@ -88,5 +88,6 @@
     <string name="review_item_rating">4.0</string>
     <string name="review_item_date">2022-06-03</string>
 
+    <string name="review_title">후기 작성하기</string>
 
 </resources>

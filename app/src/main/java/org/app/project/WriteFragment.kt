@@ -14,10 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import org.app.project.R
-import org.app.project.Review
-import org.app.project.ReviewDatabase
-import org.app.project.ReviewFragment
+import org.app.project.*
 import org.app.project.databinding.FragmentWriteBinding
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -41,6 +38,10 @@ class WrtieFragment : Fragment() {
         binding.wrtieCompleteBtn.setOnClickListener {
             initialize()
             contentsClear()
+
+
+            // 작성완료 버튼을 눌렀을 때
+
         }
 
         val titles = resources.getStringArray(R.array.titles_array)
@@ -61,18 +62,16 @@ class WrtieFragment : Fragment() {
         val formatDate = DateTimeFormatter.ISO_DATE
         val nowDate = now.format(formatDate)
 
-        reviewDB.ReviewDao().insert(Review(binding.writeMovietitleEt.toString(), binding.wrtieRateTv.toString(), binding.writeTextTv.toString(), nowDate))
+        val title: String = binding.writeMovietitleEt.text.toString()
+        val rate: String = binding.wrtieRateTv.text.toString()
+        val text: String = binding.wrtieTextEt.text.toString()
+
+        reviewDB.ReviewDao().insert(Review(title, rate, text, nowDate))
 
         val _reviewDB = reviewDB.ReviewDao().getReviews()
         Log.d("MY REVIEW LOG", _reviewDB.toString())
 
-        ReviewFragment().apply {
-            arguments = Bundle().apply {
-                val gson = Gson()
-                val writeJson = gson.toJson(_reviewDB)
-                putString("write", writeJson)
-            }
-        }
+
     }
 
     fun contentsClear() {

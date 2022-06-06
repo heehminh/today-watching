@@ -1,6 +1,7 @@
 package org.app.project
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,6 +44,7 @@ class WishFragment : Fragment() {
 
         wishRVAdapter.setMyItemClickListener(object : WishRVAdapter.MyItemClickListener{
             override fun onRemoveItem(movieId: Int) {
+                Log.d("Wish_movieId", movieId.toString())
                 movieDB.MovieDao().updateIsLikeById(false, movieId)
             }
         })

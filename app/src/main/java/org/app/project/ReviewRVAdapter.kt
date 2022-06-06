@@ -1,6 +1,7 @@
 package org.app.project.setting
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import org.app.project.R
+import org.app.project.R.color.main_red
 import org.app.project.Review
 import org.app.project.ReviewDatabase
 import org.app.project.databinding.ItemReviewBinding
@@ -65,15 +67,14 @@ class ReviewRVAdapter(private val reviewList: ArrayList<Review>): RecyclerView.A
     inner class ViewHolder(val binding: ItemReviewBinding) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("ResourceAsColor")
         fun bind(review: Review) {
-
             binding.itemTitleTv.setText("${review.title}")
             // binding.itemTitleTv.text = review.title
             binding.itemRatingTv.text = review.rate
             binding.itemDateTv.text = review.date
 
             if (review.rate == "5.0") {
-                binding.itemTitleTv.setTextColor(R.color.main_red)
-                binding.itemRatingTv.setTextColor(R.color.main_red)
+                binding.itemTitleTv.setTextColor(main_red)
+                binding.itemRatingTv.setTextColor(main_red)
             }
         }
     }

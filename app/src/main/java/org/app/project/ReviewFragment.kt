@@ -2,6 +2,7 @@ package org.app.project
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity.apply
 import android.view.LayoutInflater
 import android.view.View
@@ -33,22 +34,19 @@ class ReviewFragment: Fragment() {
         reviewDB = ReviewDatabase.getInstance(requireContext())!!
         reviewDatas.addAll(reviewDB.ReviewDao().getReviews())
 
+
         binding.reviewBackIv.setOnClickListener {
             (context as MainActivity).supportFragmentManager.beginTransaction()
                 .replace(R.id.main_frm, SettingFragment())
                 .commitAllowingStateLoss()
         }
 
-//        val reviewData = arguments?.getString("write")
-//        val review = gson.fromJson(reviewData, Review::class.java)
-//        val reviews = reviewDB.ReviewDao().getReview(review.id)
 
         // 더미데이터와 Adapter 연결
         val reviewRVAdapter = ReviewRVAdapter(reviewDatas)
         binding.reviewRecyclerview.adapter = reviewRVAdapter
         binding.reviewRecyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-       // reviewRVAdapter.addItems(reviewDB.ReviewDao().getReviews() as ArrayList<Review>)
 
         reviewRVAdapter.setMyItemClickListener(object: ReviewRVAdapter.MyItemClickListener {
             override fun onItemClick(review: Review) {

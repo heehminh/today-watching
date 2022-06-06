@@ -52,6 +52,12 @@ class MoreFragment: Fragment() {
         binding.moreMovieImageIv.setImageResource(movie.image!!)
         binding.moreMovieTitleTv.text = movie.title
 
+        if(movie.islike) {
+            binding.moreLikeIv.setImageResource(R.drawable.icon_like)
+        } else {
+            binding.moreLikeIv.setImageResource(R.drawable.icon_like_off)
+        }
+
         binding.moreMovieTextTv.text = movie?.text
     }
 
@@ -76,7 +82,6 @@ class MoreFragment: Fragment() {
     }
 
     private fun initMovie() {
-
         nowPos = movie.id -1
         Log.d("now Movie Id", nowPos.toString())
         setInit(movies[nowPos])

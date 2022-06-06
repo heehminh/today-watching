@@ -60,9 +60,7 @@ class HomeFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-//        val editor = this.requireActivity().getSharedPreferences("movieSpf", MODE_PRIVATE).edit()
-//        editor.putInt("movieId", movie.id)
-//        editor.apply()
+//
         val spf = this.requireActivity().getSharedPreferences("movieSpf", MODE_PRIVATE)
         val movieId = spf.getInt("movieId", 0)
 
